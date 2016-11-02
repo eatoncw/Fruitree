@@ -1,0 +1,23 @@
+<nav class="navbar navbar-fixed-top navbar-dark">
+	<div class="row navbar-upper">
+		<%= link_to "Fruitree", root_path, class: "navbar-brand" %>
+		
+		<ul class="nav navbar-nav float-xs-right">
+			<li class="nav-item"><%= link_to "Products", products_path, class: "nav-link" %></li>
+			<li class="nav-item"><a class="nav-link">Two</a></li>
+			<li class="nav-item"><a class="nav-link">Three</a></li>
+		</ul>
+	</div>
+	<div class="row navbar-lower">
+		<ul class="nav navbar-nav float-xs-left">
+			<%= content_for :admin %>
+		</ul>
+		
+		<ul class="nav navbar-nav float-xs-right">
+			<li class="nav-item"><a class="nav-link">Two</a></li>
+		</ul>
+	</div>
+	<div class="row navbar-breadcrumbs">
+		<%= render_breadcrumbs :separator => ' > ' %>
+	</div>
+</nav>

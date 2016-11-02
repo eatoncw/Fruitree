@@ -1,0 +1,3 @@
+$(".productid-<%= @product.id %>").replaceWith("<%= j render @product %>");
+$("#product-modal").modal("hide");
+$("#flash").html("<%= j render partial: 'shared/flash_notice' %>")

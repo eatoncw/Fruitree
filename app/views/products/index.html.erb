@@ -1,0 +1,11 @@
+<div class="row">
+	<div id="products">
+		<%= render @products %>
+	</div>
+</div>
+
+
+<!-- navbar content-->
+<% content_for :admin do %>
+	<%= link_to 'Add a Product', new_product_path, remote: true, class: "btn btn-secondary" %>
+<% end %>

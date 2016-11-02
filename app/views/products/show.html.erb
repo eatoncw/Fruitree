@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-md-6">
+		<%= @product.img_url %>
+	</div>
+	<div class="col-md-6">
+		<h1 class="display-4"><%= @product.name %></h1>
+		<p class="py-2 h4 text-muted"><%= number_to_currency(@product.price) %></p>
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#description">Description</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#ratings">Ratings</a>
+			</li>
+		</ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active pt-1" id="description" role="tabpanel">
+				<p class="lead"><%= truncate(@product.description, length: 200) %></p>
+			</div>
+			<div class="tab-pane pt-1" id="ratings" role="tabpanel">
+				<p class="lead">Blah!</p>
+			</div>
+		</div>
+
+	</div>
+</div>
+<div class="my-3" id="full-description">
+	<p><%= simple_format(@product.description) %></p>
+</div>
+
+<%= link_to 'back', products_path %>
