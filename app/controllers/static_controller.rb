@@ -19,10 +19,7 @@ class StaticController < ApplicationController
 			flash.now[:danger] = "Not enough info has been provided"
 			render :contact
 		else
-			ActionMailer::Base.mail(:from => @email,
-				:to => 'eaton.cw@gmail.com',
-				:subject => "A new contact form message from #{@name}",
-				:body => @message).deliver_later
+			UserMailer.contact_form(@email, @name, @message).deliver_later
 		end
 
 	end
