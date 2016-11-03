@@ -14,7 +14,13 @@
 		</ul>
 		
 		<ul class="nav navbar-nav float-xs-right">
-			<li class="nav-item"><a class="nav-link">Two</a></li>
+			<li class="nav-item">
+			<% if user_signed_in? %>
+				<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: "nav-link" %></li>
+			<% else %>
+				<%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %></li>
+				<li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: "nav-link" %></li>
+			<% end %>
 		</ul>
 	</div>
 </nav>

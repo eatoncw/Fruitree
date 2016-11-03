@@ -30,6 +30,8 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem "font-awesome-rails"
 gem "breadcrumbs_on_rails"
 
+gem 'devise'
+
 
 
 group :development, :test do
