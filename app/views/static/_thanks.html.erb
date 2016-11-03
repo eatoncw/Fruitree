@@ -1,0 +1,15 @@
+<div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+			
+				<h3 class="modal-title">Thanks for getting in touch <%= @name %>!</h3>
+		</div>
+		<div class="modal-body">
+			<p>An email has been sent to your our team, we'll get back in touch with you at: <%= @email %> as soon as possible.
+		</div>
+		<div class="modal-footer">
+			<%= link_to "Close", '#', class: "btn btn-success", data: { dismiss: "modal" } %>
+		</div>
+	</div>
+</div>

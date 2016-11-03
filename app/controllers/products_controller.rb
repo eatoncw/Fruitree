@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-		add_breadcrumb @product.name, @product
+		add_breadcrumb @product.breadcrumb_name, @product
 	end
 
 	def new

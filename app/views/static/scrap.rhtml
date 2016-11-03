@@ -1,0 +1,15 @@
+<% if false %>
+		<%= simple_form_tag ("static/thank_you") remote: true do |f| %>
+			<div class="modal-body">
+
+				<%= f.input :name, nil, placeholder: "Your name" %>
+				<%= f.input :email, nil, placeholder: "Your email" %>
+				<%= f.input :message, nil, placeholder: "Your message" input_html: { rows: "8" } %>
+
+			</div>
+			<div class="modal-footer">
+				<%= f.button :submit, "Send", class: "btn btn-success" %>
+				<%= link_to "Cancel", '#', class: "btn btn-danger", data: { dismiss: "modal" } %>
+			</div>
+		<% end %>
+		<% end %>

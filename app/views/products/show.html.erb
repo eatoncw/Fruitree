@@ -25,8 +25,19 @@
 
 	</div>
 </div>
-<div class="my-3" id="full-description">
-	<p><%= simple_format(@product.description) %></p>
+<div class="my-3">
+	<% if @product.description.length > 200 %>
+		<a data-toggle="collapse" href="#full-description">Full description</a>
+		<div class="collapse" id="full-description">
+			<p><%= simple_format(@product.description) %></p>
+		</div>
+	<% end %>
+</div>
+<div class="mt-2 mb-3">
+	<a data-toggle="collapse" href="#see-comments">Comments</a>
+	<div class="collapse" id="see-comments">
+	Comments
+	</div>
 </div>
 
 <%= link_to 'back', products_path %>

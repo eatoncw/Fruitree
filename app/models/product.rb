@@ -7,5 +7,8 @@ class Product < ApplicationRecord
 	validates :description, presence: true
 	validates :price, presence: true
 
+	def breadcrumb_name
+		name.truncate(30)
+	end
 end
 
