@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users, :path => 'my', :controllers => { :registrations => "user_registrations" }
 	resources :users, except: [:new, :create]
-	resources :products
+	resources :products do
+		resources :comments, except: [:new]
+	end
 	
 	get 'static/landingpage'
 	get 'static/contact'

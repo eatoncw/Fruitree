@@ -7,31 +7,34 @@
 
 <nav class="navbar navbar-fixed-top navbar-dark">
 	<div class="row navbar-upper">
-		<%= link_to "Fruitree", root_path, class: "navbar-brand" %>
-		
-		<ul class="nav navbar-nav float-xs-right">
-			<li class="nav-item"><%= link_to "Products", products_path, class: "nav-link" %></li>
-		</ul>
+		<div class="px-1">
+			<%= link_to "Fruitree", root_path, class: "navbar-brand" %>
+			
+			<ul class="nav navbar-nav float-xs-right">
+				<li class="nav-item"><%= link_to "Products", products_path, class: "nav-link" %></li>
+			</ul>
+		</div>
 	</div>
 	<div class="row navbar-lower">
-		
-		<ul class="nav navbar-nav float-xs-right">
-			<li class="nav-item">
-			<% if user_signed_in? %>
-				<span class="navbar-text mr-2">Welcome <%= current_user.first_name %></span></li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">My account</a>
-					<div class="dropdown-menu dropdown-menu-right">
-						<%= link_to 'My details', user_path(current_user), class: "dropdown-item" %>
-						<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
-						<%= content_for :adminspace if current_user.admin? %>
-					</div>
-				</li>
-			<% else %>
-				<%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %></li>
-				<li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: "nav-link" %></li>
-			<% end %>
-		</ul>
+		<div class="px-1">
+			<ul class="nav navbar-nav float-xs-right">
+				<li class="nav-item">
+				<% if user_signed_in? %>
+					<span class="navbar-text mr-2">Welcome <%= current_user.first_name %></span></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">My account</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<%= link_to 'My details', user_path(current_user), class: "dropdown-item" %>
+							<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
+							<%= content_for :adminspace if current_user.admin? %>
+						</div>
+					</li>
+				<% else %>
+					<%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %></li>
+					<li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: "nav-link" %></li>
+				<% end %>
+			</ul>
+		</div>
 	</div>
 </nav>
 

@@ -1,0 +1,14 @@
+<% if signed_in? %>
+	<div class="row my-2">
+		<div class="col-md-9">
+			<p class="lead">Add a review</p>
+			<%= simple_form_for [@product, @product.comments.build], remote: true do |f| %>
+				<%= f.input :body, label: false, as: :string, input_html: { class: 'form-control-lg' } %>
+				<%= f.input :rating, label: false %>
+				<%= f.button :submit, "Add your review", class: "btn btn-secondary" %>
+			<% end %>
+		</div>
+	</div>
+<% else %>
+	<p class="lead">Sign in to leave a review</p>
+<% end %>

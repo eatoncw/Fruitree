@@ -2,8 +2,8 @@
 	<div class="card">
 		<img class="card-img-top">
 		<div class="card-block">
-			<h4><%= link_to truncate(product.name, length: 25, separator: ' '), product, class: "card-title" %></h4>
-			<p class="card-text"><%= truncate(product.description, length: 40, separator: ' ') %></p>
+			<h4><%= link_to truncate(product.name, length: 25), product, class: "card-title" %></h4>
+			<p class="card-text"><%= truncate(product.description, length: 40) %></p>
 		</div>
 		<% if signed_in? && current_user.admin? %>
 			<div class="card-block">
