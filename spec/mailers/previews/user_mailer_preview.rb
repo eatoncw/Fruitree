@@ -7,4 +7,5 @@ class UserMailerPreview < ActionMailer::Preview
 	def welcome
 		UserMailer.welcome(@user = User.find(5))
 	end
+
 end

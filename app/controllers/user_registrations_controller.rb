@@ -6,6 +6,9 @@ class UserRegistrationsController < Devise::RegistrationsController
 		end
 	end
 
+	def show
+	end
+
 	def sign_up_params
 		params.require(:user).permit(:first_name, :last_name, :nickname, :email, :password, :password_confirmation)
 	end

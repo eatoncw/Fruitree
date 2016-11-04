@@ -1,0 +1,27 @@
+<h1>My details</h1>
+<div class="row mt-2 mb-3">
+	<div class="col-md-6 col-sm-6">
+		<table class="table">
+			<tbody>
+				<tr>
+					<th scope="row">First name</th>
+					<td><%= @user.first_name %></td>
+				</tr>
+				<tr>
+					<th scope="row">Last name</th>
+					<td><%= @user.last_name %></td>
+				</tr>
+				<tr>
+					<th scope="row">Nickname</th>
+					<td><%= @user.nickname %></td>
+				</tr>
+				<tr>
+					<th scope="row">Email</th>
+					<td><%= @user.email %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<%= link_to 'Change my details', edit_user_registration_path, class: "btn btn-secondary" %>

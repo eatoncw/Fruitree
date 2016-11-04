@@ -5,6 +5,9 @@
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :first_name, required: true %>
+    <%= f.input :last_name, required: true %>
+    <%= f.input :nickname, required: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -12,16 +15,20 @@
 
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <div class="py-2">
+    	<%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { class: "password-required" }, label_html: { class: "text-danger h6"}, hint_html: { class: "text-danger h6"} %>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update your information", class: "btn btn-success btn-lg" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<%= link_to "Cancel changes", :back, class: "btn btn-danger my-3" %>
+
+<h3 class="mt-3 py-2">Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+

@@ -1,4 +1,7 @@
-$(document).on('turbolinks:load', function () {
+var flashFade = function() {
+	$('.alert').fadeOut(8000);
+};
 
-	$('#flash').fadeOut(8000);
+$(document).on('turbolinks:load', function () {
+	flashFade();
 });

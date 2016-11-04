@@ -1,5 +1,21 @@
 .navbar {
 	padding-top: 0;
+
+	.nav-item .nav-link {
+		color: #fff;
+	}
+
+	.row {
+		height: 60px;
+	}
+
+	.navbar-upper .nav-link {
+		font-size: 1.2rem;
+	}
+
+	.navbar-brand {
+		font-size: 1.5rem;
+	}
 }
 
 .navbar .row {
@@ -17,7 +33,7 @@
 /*footer*/
 .navbar-bottom {
 	background-color: #2ecc71;
-	margin-top: 200px;
+	margin-top: 300px;
 }
 
 .copyright {
@@ -39,13 +55,17 @@
 	@extend .alert-success;
 }
 
-.alert-alert, .alert-error {
+.alert-alert, .alert-error, .alert-danger {
 	@extend .alert-warning;
 }
 
 #flash {
 	position: fixed;
-	top: 150px;
-	left: 100px;
-	width: 75%;
+	top: 165px;
+	left: 50px;
+	width: 90%;
+}
+
+.password-required {
+	border-color: #d9534f;
 }

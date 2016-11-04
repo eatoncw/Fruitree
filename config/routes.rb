@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { :registrations => "user_registrations" }
+  devise_for :users, :path => 'my', :controllers => { :registrations => "user_registrations" }
+	resources :users, except: [:new, :create]
 	resources :products
 	
 	get 'static/landingpage'

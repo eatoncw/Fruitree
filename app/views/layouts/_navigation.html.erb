@@ -1,22 +1,32 @@
+<% content_for :adminspace do %>
+	<div class="dropdown-divider"></div>
+	<h6 class="dropdown-header">Admin only</h6>
+	<div class="dropdown-divider"></div>
+	<%= link_to 'Manage users', users_path, class: "dropdown-item" %>
+<% end %>
+
 <nav class="navbar navbar-fixed-top navbar-dark">
 	<div class="row navbar-upper">
 		<%= link_to "Fruitree", root_path, class: "navbar-brand" %>
 		
 		<ul class="nav navbar-nav float-xs-right">
 			<li class="nav-item"><%= link_to "Products", products_path, class: "nav-link" %></li>
-			<li class="nav-item"><a class="nav-link">Two</a></li>
-			<li class="nav-item"><a class="nav-link">Three</a></li>
 		</ul>
 	</div>
 	<div class="row navbar-lower">
-		<ul class="nav navbar-nav float-xs-left">
-			<%= content_for :admin %>
-		</ul>
 		
 		<ul class="nav navbar-nav float-xs-right">
 			<li class="nav-item">
 			<% if user_signed_in? %>
-				<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: "nav-link" %></li>
+				<span class="navbar-text mr-2">Welcome <%= current_user.first_name %></span></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">My account</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<%= link_to 'My details', user_path(current_user), class: "dropdown-item" %>
+						<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
+						<%= content_for :adminspace if current_user.admin? %>
+					</div>
+				</li>
 			<% else %>
 				<%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %></li>
 				<li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: "nav-link" %></li>
@@ -30,3 +40,4 @@
 		<%= render_breadcrumbs :separator => ' > ' %>
 	</div>
 <% end %>
+

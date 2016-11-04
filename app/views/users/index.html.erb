@@ -1,0 +1,18 @@
+<p class="lead text-muted pb-2">Admin space</p>
+<h2>Site Users</h2>
+<div class="row py-1">
+	<div class="col-md-9 col-sm-12">
+		<div class="list-group">
+			<% @users.each do |user| %>
+				<%= link_to(edit_user_path(user), class:"list-group-item list-group-item-action") do %>
+				<%= user.first_name %> <%= user.last_name %>
+					<% if user.admin == true %>
+						<span class="text-muted small pl-1">Admin</span>
+					<% end %>
+					<span class="tag tag-default tag-pill float-xs-right">Orders: <%= user.orders.count %></span>
+
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

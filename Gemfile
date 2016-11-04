@@ -31,6 +31,7 @@ gem "font-awesome-rails"
 gem "breadcrumbs_on_rails"
 
 gem 'devise'
+gem 'cancancan', '~> 1.10'
 
 
 

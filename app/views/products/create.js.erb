@@ -1,6 +1,7 @@
 $("#product-modal").modal("hide");
 $("<%= j render @product %>").prependTo("#products");
-$("#flash").html("<%= j render partial: 'shared/flash_notice' %>")
+$("#flash").html("<%= j render partial: 'shared/flash_notice' %>");
+flashFade();
 
 
 
