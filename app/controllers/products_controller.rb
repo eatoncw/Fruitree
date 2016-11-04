@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
 	before_action :set_product, except: [:index, :new, :create]
 	before_action :authenticate_user!, except: [:index, :show]
+	load_and_authorize_resource
 	add_breadcrumb "Fruitree", :root_path
 	add_breadcrumb "Products", :products_path
 

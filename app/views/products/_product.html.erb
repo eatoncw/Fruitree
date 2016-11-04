@@ -5,9 +5,11 @@
 			<h4><%= link_to truncate(product.name, length: 25, separator: ' '), product, class: "card-title" %></h4>
 			<p class="card-text"><%= truncate(product.description, length: 40, separator: ' ') %></p>
 		</div>
-		<div class="card-block">
-			<%= link_to 'edit', edit_product_path(product), remote: true, class: "card-link" %>
-			<%= link_to 'delete', product, remote: true, method: :delete, data: { confirm: 'Are you sure you want to delete this product' }, class: "card-link" %>
-		</div>
+		<% if signed_in? && current_user.admin? %>
+			<div class="card-block">
+				<%= link_to 'edit', edit_product_path(product), remote: true, class: "card-link" %>
+				<%= link_to 'delete', product, remote: true, method: :delete, data: { confirm: 'Are you sure you want to delete this product' }, class: "card-link" %>
+			</div>
+		<% end %>
 	</div>
 </div>

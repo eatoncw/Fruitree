@@ -1,4 +1,6 @@
-<%= link_to 'Add a Product', new_product_path, remote: true, class: "btn btn-secondary mb-2" %>
+<% if signed_in? && current_user.admin? %>
+	<%= link_to 'Add a Product', new_product_path, remote: true, class: "btn btn-secondary mb-2" %>
+<% end %>
 <div class="row">
 	<div id="products">
 		<%= render @products %>
