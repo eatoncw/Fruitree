@@ -42,3 +42,10 @@
 .alert-alert, .alert-error {
 	@extend .alert-warning;
 }
+
+#flash {
+	position: fixed;
+	top: 150px;
+	left: 100px;
+	width: 75%;
+}
