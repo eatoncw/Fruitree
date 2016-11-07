@@ -1,8 +1,0 @@
-<% if signed_in? %>
-	<p class="lead">Add a review</p>
-	<%= simple_form_for [@product, @product.comments.build], html: { class: "form-inline" }, remote: true do |f| %>
-		<%= f.input :body, label: false, required: true %>
-		<%= f.input :rating, label: false %>
-		<%= f.button :submit, class: "btn btn-success" %>
-	<% end %>
-<% end %>

@@ -30,6 +30,7 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 	end
 gem "font-awesome-rails"
 gem "breadcrumbs_on_rails"
+gem 'will_paginate', '~> 3.1.0'
 
 gem 'devise'
 gem 'cancancan', '~> 1.10'

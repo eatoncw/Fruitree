@@ -3,6 +3,7 @@
 		<%= @product.img_url %>
 	</div>
 	<div class="col-md-6">
+		<div class="rated average-rating" data-score="<%= @product.average_rating %>"></div>
 		<h1 class="display-4"><%= @product.name %></h1>
 		<p class="py-2 h4 text-muted"><%= number_to_currency(@product.price) %></p>
 		<ul class="nav nav-tabs" role="tablist">
@@ -38,10 +39,16 @@
 </div>
 
 <div class="mt-2 mb-3">
-	<a data-toggle="collapse" href="#see-comments">Show all reviews</a>
-	<div class="collapse" id="see-comments">
-		<%= render @product.comment_order %>
+	<a data-toggle="collapse" href="#comment-show">Show all reviews</a>
+	<div class="collapse" id="comment-show">
+		<div id="see-comments">
+			<%= render @comments %>
+		</div>
+		<div id="pagination-comments" class="pagination">
+			<%= js_will_paginate @comments %>
+		</div>
 	</div>
 </div>
+
 
 <%= link_to 'back', products_path %>

@@ -7,7 +7,7 @@
 					<% if comment.flag == true %>
 						<p class="lead text-danger">This comment has been flagged as inappropriate</p>
 					<% else %>
-						<p class="mb-0 small text-muted"><%= comment.rating %></p>
+						<div class="rated" data-score="<%= comment.rating %>"></div>
 						<p class="mb-0"><%= comment.body %></p>
 					<% end %>
 				</div>
@@ -25,11 +25,12 @@
 			<div class="col-xs-1 float-xs-right">
 				<% if comment.flag == false %>
 					<div class="flag" data-toggle="tooltip" title="flag comment as inappropriate">
-						<%= link_to "flag", flag_product_comment_path(@product, comment, :flag => true), remote: true, method: :patch %>
+						<%= link_to (fa_icon 'flag'), flag_product_comment_path(@product, comment, :flag => true), remote: true, method: :patch %>
 						
 					</div>
 				<% end %>
 			</div>
 		<% end %>
 	</div>
+	
 <% end %>

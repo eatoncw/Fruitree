@@ -6,8 +6,13 @@ class CommentsController < ApplicationController
 		@product = Product.find(params[:product_id])
 		
 		@comment = @product.comments.new(comment_params)
-		@comment.user = current_user
-		@comment.save
+		
+		if @comment.rating == nil || @comment.body.length < 1
+			render :no_comment
+		else
+			@comment.user = current_user
+			@comment.save
+		end
 
 	end
 
@@ -23,12 +28,6 @@ class CommentsController < ApplicationController
 				flash.now[:danger] = "You are not authorized to delete this comment"
 			end
 		end
-	end
-
-	def edit
-	end
-
-	def update
 	end
 
 	def flag

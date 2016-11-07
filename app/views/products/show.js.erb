@@ -1,0 +1,4 @@
+$("#see-comments").html("<%= j render @comments %>");
+$("#pagination-comments").html('<%= js_will_paginate @comments %>');
+highlightComments();
+rated();

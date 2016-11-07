@@ -2,19 +2,21 @@ class ProductsController < ApplicationController
 
 	before_action :set_product, except: [:index, :new, :create]
 	before_action :authenticate_user!, except: [:index, :show]
+	
 	load_and_authorize_resource
+	
 	add_breadcrumb "Fruitree", :root_path
 	add_breadcrumb "Products", :products_path
 
 	def index
-		@products = Product.all
-
+		@products = Product.paginate(:page => params[:page], :per_page => 6)
 	end
 
 	def show
 		add_breadcrumb @product.breadcrumb_name, @product
 
-		#@comments = @product.comments.order(created_at: :desc)
+		@comments = @product.comment_order.paginate(:page => params[:page], :per_page => 5 )		
+
 	end
 
 	def new
