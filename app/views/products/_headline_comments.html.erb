@@ -1,0 +1,13 @@
+<% if @product.comments.count >= 3 %>
+	<blockquote class="lead">
+		<p class="mb-0 small text-muted"><%= @product.highest_rated_comment.rating %></p>
+		<p class="mb-0"><%= truncate(@product.highest_rated_comment.body, length: 200) %></p>
+		<footer class="blockquote-footer"><%= @product.highest_rated_comment.user.first_name %><span class="pl-1"><%= time_ago_in_words(@product.highest_rated_comment.created_at) %> ago</span></footer>
+	</blockquote>
+	<blockquote class="lead pt-1">
+		<p class="mb-0"><%= truncate(@product.lowest_rated_comment.body, length: 200) %><span><%= @product.lowest_rated_comment.rating %></span></p>
+		<footer class="blockquote-footer"><%= @product.lowest_rated_comment.user.first_name %><span class="pl-1"><%= time_ago_in_words(@product.lowest_rated_comment.created_at) %> ago</span></footer>
+	</blockquote>
+<% else %>
+	<p class="lead"><em>There aren't enough reviews at this time</em></p>
+<% end %>

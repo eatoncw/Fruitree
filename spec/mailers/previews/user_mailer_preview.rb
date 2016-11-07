@@ -8,4 +8,8 @@ class UserMailerPreview < ActionMailer::Preview
 		UserMailer.welcome(@user = User.find(5))
 	end
 
+	def flag
+		UserMailer.flag(@user = User.last, @comment = Comment.last)
+	end
+
 end

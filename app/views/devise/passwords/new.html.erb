@@ -1,15 +1,27 @@
-<h2>Forgot your password?</h2>
+<div class="row">
+	<div class="col-md-6 offset-md-3 p-2 greenbox">
+		
+		<p class="lead pb-1"><strong>Forgot your password?</strong></p>
+		<%= simple_form_for(resource, as: resource_name, defaults: { input_html: { class: "form-control form-control-lg" } }, url: password_path(resource_name), html: { method: :post }) do |f| %>
+			<%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+			<div class="form-inputs">
+				<%= f.input :email, label: false, placeholder: "Email address", required: true, autofocus: true %>
+			</div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-  </div>
+			<div class="form-actions pb-2 my-2">
+				<%= f.button :submit, "Send me reset instructions", class: "btn btn-danger btn-lg" %>
+			</div>
+		<% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions", class: "btn btn-secondary btn-lg" %>
-  </div>
-<% end %>
+		<div class="row mt-2 py-2">
+			<div class="col-lg-12">
+				<div class="btn-group float-xs-left" role="group">
+					<%= link_to 'Sign up', new_user_registration_path, class: "btn btn-secondary btn-lg" %>
+					<%= link_to 'Log in', new_user_session_path, class: "btn btn-secondary btn-lg" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-<%= render "devise/shared/links" %>

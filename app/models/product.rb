@@ -19,5 +19,9 @@ class Product < ApplicationRecord
 	def lowest_rated_comment
 		comments.rating_desc.last
 	end
+
+	def comment_order
+		comments.order(created_at: :desc)
+	end
 end
 

@@ -14,4 +14,11 @@ class UserMailer < ApplicationMailer
 			mail(:to => user.email,
 				:subject => "Welcome to Fruitree")
 	end
+
+	def flag(user, comment)
+		@user = user
+		@comment = comment
+		mail(:to => "eaton.cw@gmail.com",
+			:subject => "A comment has been flagged as inappriopriate")
+	end
 end

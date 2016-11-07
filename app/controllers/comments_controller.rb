@@ -12,6 +12,17 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
+		@product = Product.find(params[:product_id])
+
+		if current_user.admin?
+			@comment.destroy
+		else
+			if @comment.user_id = current_user.id
+				@comment.destroy
+			else
+				flash.now[:danger] = "You are not authorized to delete this comment"
+			end
+		end
 	end
 
 	def edit
@@ -21,6 +32,12 @@ class CommentsController < ApplicationController
 	end
 
 	def flag
+		@product = Product.find(params[:product_id])
+		flagged = params[:flag]
+		@comment.update(flag: flagged)
+		
+		@user = current_user
+		UserMailer.flag(@user, @comment).deliver_later
 	end
 
 	private
@@ -33,6 +50,6 @@ class CommentsController < ApplicationController
 		end
 
 		def comment_params
-			params.require(:comment).permit(:user_id, :body, :rating)
+			params.require(:comment).permit(:user_id, :body, :rating, :flag)
 		end
 end

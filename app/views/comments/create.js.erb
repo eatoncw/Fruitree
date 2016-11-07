@@ -1,0 +1,4 @@
+$("#see-comments").collapse('show');
+$("#new-comments").html("Thank you for your review!").addClass("lead");
+$("#see-comments").prepend("<%= j render @comment %>").find(".comment-<%= @comment.id %>").addClass("flash-highlight").removeClass("flash-highlight", 500);
+highlightComments();

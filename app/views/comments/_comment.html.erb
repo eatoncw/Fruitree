@@ -1,7 +1,35 @@
-<% @comments.each do |comment| %>
-	<blockquote class="blockquote my-2">
-		<p class="mb-0 small text-muted"><%= comment.rating %></p>
-		<p class="mb-0"><%= comment.body %></p>
-		<footer class="blockquote-footer"><%= comment.user.first_name %><span class="ml-1"><%= time_ago_in_words(comment.created_at) %> ago</span></footer>
-	</blockquote>
+<% unless comment.id.nil? %>
+	
+	<div class="row comment-<%= comment.id %> comments">
+		<div class="col-xs-10 float-xs-left">
+			<blockquote class="blockquote my-1">
+				<div class="comment-text">
+					<% if comment.flag == true %>
+						<p class="lead text-danger">This comment has been flagged as inappropriate</p>
+					<% else %>
+						<p class="mb-0 small text-muted"><%= comment.rating %></p>
+						<p class="mb-0"><%= comment.body %></p>
+					<% end %>
+				</div>
+				<footer class="blockquote-footer"><%= comment.user.first_name %><span class="ml-1"><%= time_ago_in_words(comment.created_at) %> ago</span></footer>
+			</blockquote>
+		</div>
+		<% if signed_in? %>
+			<div class="col-xs-1 float-xs-left">
+				<% if comment.user.id == current_user.id || current_user.admin %>
+					
+				<%= link_to (fa_icon 'trash'), [@product, comment], remote: true, method: :delete, data: { confirm: 'Are you sure you want to delete this comment' } %>
+				<% end %>
+			</div>
+				
+			<div class="col-xs-1 float-xs-right">
+				<% if comment.flag == false %>
+					<div class="flag" data-toggle="tooltip" title="flag comment as inappropriate">
+						<%= link_to "flag", flag_product_comment_path(@product, comment, :flag => true), remote: true, method: :patch %>
+						
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
 <% end %>

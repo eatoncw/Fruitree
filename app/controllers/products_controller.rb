@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
 	def show
 		add_breadcrumb @product.breadcrumb_name, @product
 
-		@comments = @product.comments.order("created_at DESC")
+		#@comments = @product.comments.order(created_at: :desc)
 	end
 
 	def new

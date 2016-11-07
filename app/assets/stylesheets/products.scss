@@ -1,3 +1,15 @@
-// Place all the styles related to the Products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.flash-highlight {
+	background-color: rgba(46, 204, 113, 0.45);
+}
+
+.comments-highlight {
+	background-color: rgba(46, 204, 113, 0.01);
+}
+
+.flag {
+	display: none;
+}
+
+.flag-show {
+	display: unset;
+}
