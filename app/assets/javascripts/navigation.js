@@ -14,7 +14,7 @@ var highlightComments = function() {
 };
 
 var rated = function() {
-	$('.rated').raty( { path: '/app/assets',
+	$('.rated').raty( { path: '/assets',
 		readOnly: true,
 		score: function() {
 			return $(this).attr('data-score');
@@ -27,7 +27,7 @@ $(document).on('turbolinks:load', function () {
 	highlightComments();
 	$('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
 	
-	$('.rating').raty( { path: '/app/assets', scoreName: 'comment[rating]' } );
+	$('.rating').raty( { path: '/assets', scoreName: 'comment[rating]' } );
 	rated();
 	
 });
