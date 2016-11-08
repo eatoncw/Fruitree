@@ -1,8 +1,27 @@
 <% if signed_in? && current_user.admin? %>
 	<%= link_to 'Add a Product', new_product_path, remote: true, class: "btn btn-secondary mb-2" %>
 <% end %>
+<div class="row my-2">
+	<div class="col-md-6 float-xs-right search-form">
+		<%= form_tag("/products", method: "get", role: "search", remote: true) do %>
+			<div class="input-group">	 
+				<%= text_field_tag('q', nil, placeholder: "Search for...", class: "form-control") %>
+				<span class="input-group-btn">
+					<%= submit_tag("Go", class: "btn btn-secondary search-toggle", id: "search-button") %>
+				</span>
+			</div>
+		<% end %>
+	</div>
+</div>
 <div class="row">
 	<div id="products">
 		<%= render @products %>
 	</div>
 </div>
+
+
+
+
+		
+		
+			

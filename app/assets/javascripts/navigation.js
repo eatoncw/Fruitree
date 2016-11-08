@@ -22,6 +22,18 @@ var rated = function() {
 	});
 };
 
+var searchButtonToggle = function() {
+	$('.search-toggle').on('click', function() {
+		if ($(this).closest(".search-form").find("input[type=text]").val().length < 1 ) {
+			$(this).val('Go');
+		} else if ($(this).val() === 'Go'){
+			$(this).val('Reset');
+		} else {
+			$(this).val('Go');
+		}
+	});
+}
+
 $(document).on('turbolinks:load', function () {
 	flashFade();
 	highlightComments();
@@ -29,5 +41,17 @@ $(document).on('turbolinks:load', function () {
 	
 	$('.rating').raty( { path: '/assets', scoreName: 'comment[rating]' } );
 	rated();
+	searchButtonToggle();
+
+
+		
+		//$(this).attr('id', 'search-button-reset');
+		//event.stopPropagation();
+
+	//});
+	//$('#search-button-reset').on('click', function(event) {
+		//$(this).val(toggleText);
+		//$(this).attr('id', 'search-button');
+	//});
 	
 });

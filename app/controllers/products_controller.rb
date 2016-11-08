@@ -9,7 +9,18 @@ class ProductsController < ApplicationController
 	add_breadcrumb "Products", :products_path
 
 	def index
-		@products = Product.all
+	
+		if params[:q]
+			search_term = params[:q]
+			if Rails.env.development?
+				@products = Product.where("name LIKE ?", "%#{search_term}%").order("created_at DESC")
+			else
+				@products = Product.where("name ilike ?", "%#{search_term}%").order("created_at DESC")
+			end
+		else
+			@products = Product.all.order("created_at DESC")
+		end
+		
 	end
 
 	def show
