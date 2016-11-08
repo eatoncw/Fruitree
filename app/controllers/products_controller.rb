@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
 	add_breadcrumb "Products", :products_path
 
 	def index
-		@products = Product.paginate(:page => params[:page], :per_page => 6)
+		@products = Product.all
 	end
 
 	def show
@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
 		end
 
 		def product_params
-			params.require(:product).permit(:name, :description, :price, :img_url)
+			params.require(:product).permit(:name, :description, :price, :product_image)
 		end
 
 end

@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'jquery-ui-rails'
 gem 'simple_form'
+gem "paperclip", "~> 5.0.0"
+gem 'remotipart', '~> 1.3', '>= 1.3.1'
+gem 'aws-sdk', '~> 2.3'
 
 gem 'bootstrap', '~> 4.0.0.alpha5'
 	source 'https://rails-assets.org' do

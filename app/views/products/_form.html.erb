@@ -13,7 +13,7 @@
 			</h3>
 		</div>
 
-		<%= simple_form_for @product, remote: true do |f| %>
+		<%= simple_form_for @product, html: { multipart: true }, remote: true do |f| %>
 			<div class="modal-body">
 				
 				<% if @product.errors.any? %>
@@ -30,9 +30,12 @@
 				<% end %>
 
 				<%= f.input :name %>
-				<%= f.input :img_url %>
 				<%= f.input :description, input_html: { rows: "8" } %>
 				<%= f.input :price %>
+				<div class="photo-preview">
+					<%= f.input :product_image, as: :file, label: false %>
+				</div>
+
 
 			</div>
 			<div class="modal-footer">

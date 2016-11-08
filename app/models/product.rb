@@ -4,9 +4,12 @@ class Product < ApplicationRecord
 	has_many :comments
 	
 	validates :name, presence: true, length: { minimum: 5 }
-	validates :img_url, presence: true
 	validates :description, presence: true
 	validates :price, presence: true
+
+	has_attached_file :product_image, styles: { medium: "300x300>", thumb: "100x100#", large: "1200x1200>" }
+	validates_attachment_content_type :product_image, content_type: /\Aimage\/.*\z/
+
 
 	def breadcrumb_name
 		name.truncate(30)

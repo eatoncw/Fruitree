@@ -1,6 +1,6 @@
 <div class="row">
-	<div class="col-md-6">
-		<%= @product.img_url %>
+	<div class="col-md-6 product-image">
+		<%= image_tag @product.product_image.url(:large), class: "img-fluid" %>
 	</div>
 	<div class="col-md-6">
 		<div class="rated average-rating" data-score="<%= @product.average_rating %>"></div>
