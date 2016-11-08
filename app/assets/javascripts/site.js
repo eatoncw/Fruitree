@@ -43,15 +43,11 @@ $(document).on('turbolinks:load', function () {
 	rated();
 	searchButtonToggle();
 
-
-		
-		//$(this).attr('id', 'search-button-reset');
-		//event.stopPropagation();
-
-	//});
-	//$('#search-button-reset').on('click', function(event) {
-		//$(this).val(toggleText);
-		//$(this).attr('id', 'search-button');
-	//});
+	$(".img-zoom").elevateZoom({
+		zoomType: "lens",
+		lensShape: "round",
+		lensSize: 200,
+		responsive: true
+	});
 	
 });
