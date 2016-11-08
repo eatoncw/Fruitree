@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-6 product-image">
-		<%= image_tag @product.product_image.url(:large), class: "img-fluid img-zoom" %>
+		<%= image_tag @product.product_image.url(:large), class: "img-fluid img-zoom", data_zoom_image: "#{@product.product_image}" %>
 	</div>
 	<div class="col-md-6">
 		<div class="rated average-rating" data-score="<%= @product.average_rating %>"></div>
