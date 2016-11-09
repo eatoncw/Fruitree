@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
 		add_breadcrumb @product.breadcrumb_name, @product
 
 		@comments = @product.comment_order.paginate(:page => params[:page], :per_page => 5 )		
-
+    #width, height = @product.dimensions
 	end
 
 	def new

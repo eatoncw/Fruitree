@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107234307) do
+ActiveRecord::Schema.define(version: 20161109200348) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20161107234307) do
     t.string   "product_image_content_type"
     t.integer  "product_image_file_size"
     t.datetime "product_image_updated_at"
+    t.string   "dimensions"
   end
 
   create_table "users", force: :cascade do |t|

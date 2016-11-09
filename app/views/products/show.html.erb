@@ -1,10 +1,15 @@
 <div class="row">
 	<div class="col-md-6 product-image">
+		<% if @product.image_width < 1000 %>
+			<%= image_tag @product.product_image.url(:large), class: "img-fluid" %>
+		<% else %>
 		<%= image_tag @product.product_image.url(:large), class: "img-fluid img-zoom", data_zoom_image: "#{@product.product_image}" %>
+		<% end %>
 	</div>
 	<div class="col-md-6">
 		<div class="rated average-rating" data-score="<%= @product.average_rating %>"></div>
 		<h1 class="display-4"><%= @product.name %></h1>
+
 		<p class="py-2 h4 text-muted"><%= number_to_currency(@product.price) %></p>
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="nav-item">
