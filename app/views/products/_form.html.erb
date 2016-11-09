@@ -38,7 +38,8 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="preview-container">
-							<img id="product-preview" class="img-fluid" src="#" alt="your image" />
+							<%= image_tag "", id:"product-preview", class:"img-fluid" %>
+							<%= content_tag(:h1, fa_icon("picture-o 4x"), class:"img-fluid", id: "icon-preview") %>
 						</div>
 					</div>
 				</div>
