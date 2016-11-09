@@ -37,22 +37,30 @@ class Product < ApplicationRecord
 		product_image_content_type =~ %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|pjpeg|png|x-png)$}
 	end
 
-  def image_width
-    dimensions.split('x').first.to_i
-  end
+	def image_width
+		dimensions.split('x').first.to_i
+	end
 
-  def image_height
-    dimensions.split('x').last.to_i
-  end
+	def image_height
+		dimensions.split('x').last.to_i
+	end
+
+	def price_in_cents
+		if Rails.env.production?
+			(price.to_f * 100).to_i
+		else
+			(price * 100).to_i
+		end
+	end
 
 	private
 		def extract_dimensions
 			return unless image?
-  		tempfile = product_image.queued_for_write[:original]
-  		unless tempfile.nil?
-    		geometry = Paperclip::Geometry.from_file(tempfile)
-    		self.dimensions = [geometry.width.to_i, geometry.height.to_i].join('x')
-  		end
+			tempfile = product_image.queued_for_write[:original]
+			unless tempfile.nil?
+				geometry = Paperclip::Geometry.from_file(tempfile)
+				self.dimensions = [geometry.width.to_i, geometry.height.to_i].join('x')
+			end
 		end
 end
 

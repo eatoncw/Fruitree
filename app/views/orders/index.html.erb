@@ -1,0 +1,18 @@
+<% unless @orders.nil? %>
+<h1 class="display-4 pb-2"><%= @current_user.first_name %>'s Orders</h1>
+	<div class="row">
+		<% @orders.each do |order| %>
+			<div class="col-md-3 col-sm-4">
+				<div class="card">
+					<div class="product-image">
+						<%= link_to (image_tag order.product.product_image.url(:thumb), class: "card-img-top img-fluid"), order %>
+					</div>
+					<div class="card-block">
+						<h4><%= link_to order.product.name, order, class: "card-title" %></h4>
+						<p class="card-text"><%= number_to_currency(order.total) %></p>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+<% end %>

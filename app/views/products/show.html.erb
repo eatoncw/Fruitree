@@ -10,7 +10,16 @@
 		<div class="rated average-rating" data-score="<%= @product.average_rating %>"></div>
 		<h1 class="display-4"><%= @product.name %></h1>
 
-		<p class="py-2 h4 text-muted"><%= number_to_currency(@product.price) %></p>
+		<p class="py-1 h4 text-muted"><%= number_to_currency(@product.price) %><span class="pl-2"><%= link_to 'Please login in to purchase', new_user_session_path, class: "btn btn-warning" unless signed_in? %></span></p>
+		<div class="pb-1">
+				<%= form_tag "/payments/create" do %>
+						<%= hidden_field_tag(:product_id, @product.id) %>
+						<%= render partial: "shared/stripe_checkout_button" if signed_in? %>
+
+					
+				<% end %>
+		</div>
+
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="nav-item">
 				<a class="nav-link active" data-toggle="tab" href="#description">Description</a>

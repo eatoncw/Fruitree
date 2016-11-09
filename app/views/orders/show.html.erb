@@ -1,0 +1,10 @@
+<h1 class="display-4"><%= @order.user.first_name %> 's Order</h1>
+<div class="row">
+	<div class="col-md-12 pt-2">
+		<%= link_to (image_tag @order.product.product_image.url(:thumb)), @product %>
+		<h4 class="py-1"><%= link_to @order.product.name, @product %></h4>
+		<p class="lead"><%= number_to_currency(@order.total) %></p>
+		</div>
+	</div>
+</div>
+

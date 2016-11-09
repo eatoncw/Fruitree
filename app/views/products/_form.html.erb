@@ -31,7 +31,12 @@
 
 				<%= f.input :name %>
 				<%= f.input :description, input_html: { rows: "8" } %>
-				<%= f.input :price %>
+				<div class="form-group">
+					<div class="input-group mb-1">
+						<div class="input-group-addon">$</div>
+						<%= f.input :price, label: false, placeholder: "Amount",input_html: {class: "form-control"} %>
+					</div>
+				</div>
 				
 				<%= f.input :product_image, as: :file, label: false, input_html: {class: "image-upload"} %>
 				
