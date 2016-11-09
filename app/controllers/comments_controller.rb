@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
 
-	before_action :set_comment, except: [:create]
+	before_action :authenticate_user!
+  before_action :set_comment, except: [:create]
+  before_action :set_product
 
 	def create
-		@product = Product.find(params[:product_id])
-		
 		@comment = @product.comments.new(comment_params)
 		
 		if @comment.rating == nil || @comment.body.length < 1
@@ -17,8 +17,7 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@product = Product.find(params[:product_id])
-
+		
 		if current_user.admin?
 			@comment.destroy
 		else
@@ -31,7 +30,7 @@ class CommentsController < ApplicationController
 	end
 
 	def flag
-		@product = Product.find(params[:product_id])
+		
 		flagged = params[:flag]
 		@comment.update(flag: flagged)
 		
@@ -41,7 +40,8 @@ class CommentsController < ApplicationController
 
 	private
 
-		def set_project
+		def set_product
+      @product = Product.find(params[:product_id])
 		end
 
 		def set_comment

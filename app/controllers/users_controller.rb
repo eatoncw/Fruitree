@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	before_action :authenticate_user!
 	load_and_authorize_resource
+  before_action :set_user, except: [:index]
 
 	def index
 		if current_user.admin?
@@ -13,15 +14,12 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
 	end
 
 	def edit
-		@user = User.find(params[:id])
 	end
 
 	def update
-		@user = User.find(params[:id])
 			
 		if params[:user][:password].blank?
 			params[:user].delete(:password)
@@ -33,7 +31,7 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		@user = User.find(params[:id])
+		
 		@user.destroy!
 		redirect_to users_url
 	end
@@ -43,4 +41,8 @@ class UsersController < ApplicationController
 		def user_params
 			params.require(:user).permit(:first_name, :last_name, :nickname, :email, :password, :password_confirmation, :current_password)
 		end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
 end

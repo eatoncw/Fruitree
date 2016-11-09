@@ -18,7 +18,11 @@ class PaymentsController < ApplicationController
 
 			if charge.paid
 				total = @product.price
-				@order = Order.create(product_id: @product.id, user_id: @user.id, total: total)
+				@order = Order.new(order_params)
+        @order.user_id = current_user.id
+        @order.product_id = @product.id
+        @order.total = total
+        @order.save
 			end
 		rescue Stripe::CardError => e
 			body = e.json_body
@@ -28,4 +32,8 @@ class PaymentsController < ApplicationController
 
 		redirect_to @order, notice: "Product was successfully purchased"
 	end
+
+  private
+    def order_params
+      params.require(:order).permit(:user_id, :product_id, :total)
 end
