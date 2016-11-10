@@ -1,17 +1,19 @@
-<div class="col-md-4 col-sm-6 productid-<%= product.id %>">
-	<div class="card">
-		<div class="product-image">
-			<%= link_to (image_tag product.product_image.url(:thumb), class: "card-img-top img-fluid"), product %>
-		</div>
-		<div class="card-block">
-			<h4><%= link_to truncate(product.name, length: 25), product, class: "card-title" %></h4>
-			<p class="card-text"><%= truncate(product.description, length: 40) %></p>
-		</div>
-		<% if signed_in? && current_user.admin? %>
-			<div class="card-block">
-				<%= link_to 'edit', edit_product_path(product), remote: true, class: "card-link" %>
-				<%= link_to 'delete', product, remote: true, method: :delete, data: { confirm: 'Are you sure you want to delete this product' }, class: "card-link" %>
+<% cache product do %>
+	<div class="col-md-4 col-sm-6 productid-<%= product.id %>">
+		<div class="card">
+			<div class="product-image">
+				<%= link_to (image_tag product.product_image.url(:thumb), class: "card-img-top img-fluid"), product %>
 			</div>
-		<% end %>
+			<div class="card-block">
+				<h4><%= link_to truncate(product.name, length: 25), product, class: "card-title" %></h4>
+				<p class="card-text"><%= truncate(product.description, length: 40) %></p>
+			</div>
+			<% if signed_in? && current_user.admin? %>
+				<div class="card-block">
+					<%= link_to 'edit', edit_product_path(product), remote: true, class: "card-link" %>
+					<%= link_to 'delete', product, remote: true, method: :delete, data: { confirm: 'Are you sure you want to delete this product' }, class: "card-link" %>
+				</div>
+			<% end %>
+		</div>
 	</div>
-</div>
+<% end %>

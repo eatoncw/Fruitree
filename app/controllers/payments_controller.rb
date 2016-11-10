@@ -18,9 +18,15 @@ class PaymentsController < ApplicationController
 
 			if charge.paid
 				
-				foreign_parameters = {:user_id => @user.id, :product_id => @product.id, :total => @product.price}
-				parameters = ActionController::Parameters.new(foreign_parameters)
-				@order = Order.create(parameters.permit(:product_id, :user_id, :total))
+				#foreign_parameters = {:user_id => @user.id, :product_id => @product.id, :total => @product.price}
+				#parameters = ActionController::Parameters.new(foreign_parameters)
+				#@order = Order.create(parameters.permit(:product_id, :user_id, :total))
+				params[:user_id] = @user.id
+				params[:product_id] = @product.id
+				params[:total] = @product.price
+				@order = Order.new(order_params)
+				@order.save
+				redirect_to @order, notice: "Product was successfully purchased"
 			end
 
 		rescue Stripe::CardError => e
@@ -28,8 +34,13 @@ class PaymentsController < ApplicationController
 			err = body[:error]
 			flash[:error] = "Unfortunately there was an error processing your payment: #{err[:message]}"
 		end
-
-		redirect_to @order, notice: "Product was successfully purchased"
+		
 	end
+
+	private
+		def order_params
+			#note that 
+			params.permit(:product_id, :user_id, :total)
+		end
 
 end

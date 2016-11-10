@@ -14,9 +14,11 @@
 	</div>
 </div>
 <div class="row">
-	<div id="products">
-		<%= render @products %>
-	</div>
+	<% cache(cache_key_for_products) do %>
+		<div id="products">
+			<%= render @products %>
+		</div>
+	<% end %>
 </div>
 
 
