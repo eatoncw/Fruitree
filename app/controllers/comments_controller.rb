@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 		else
 			@comment.user = current_user
 			@comment.save
+			ActionCable.server.broadcast 'product_channel', comment: @comment, average_rating: @comment.product.average_rating
 		end
 
 	end
