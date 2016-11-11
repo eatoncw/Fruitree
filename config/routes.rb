@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-	mount ActionCable.server => '/cable'
 	devise_for :users, :path => 'my', :controllers => { :registrations => "user_registrations" }
 	resources :users, except: [:new, :create]
 	resources :products do
@@ -19,5 +18,7 @@ Rails.application.routes.draw do
 	root 'static#landingpage'
 
 	post 'payments/create'
+
+	mount ActionCable.server => '/cable'
 
 end

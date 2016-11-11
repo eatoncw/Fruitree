@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" data-product-id="<%= @product.id %>">
 	<div class="col-md-6 product-image">
 		<% if @product.image_width < 1000 %>
 			<%= image_tag @product.product_image.url(:large), class: "img-fluid" %>
@@ -46,8 +46,9 @@
 		</div>
 	<% end %>
 </div>
-<div class="alert alert-info" style="display:none" role="alert">A new comment was posted!</div>
+
 <div id="new-comments">
+<div class="alert alert-info comment" style="display:none" role="alert">A new comment was posted!</div>
 	<%= render 'new_comment' %>
 </div>
 

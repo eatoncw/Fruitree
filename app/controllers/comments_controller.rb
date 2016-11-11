@@ -6,13 +6,13 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = @product.comments.new(comment_params)
-		
+		@user = current_user
 		if @comment.rating == nil || @comment.body.length < 1
 			render :no_comment
 		else
 			@comment.user = current_user
 			@comment.save
-			ActionCable.server.broadcast 'product_channel', comment: @comment, average_rating: @comment.product.average_rating
+			ProductChannel.broadcast_to @product.id, comment: CommentsController.render(partial: 'comments/comment', locals: {comment: @comment, current_user: current_user, product: @comment.product_id}), average_rating: @product.average_rating
 		end
 
 	end
