@@ -15,6 +15,7 @@ App.product = App.cable.subscriptions.create("ProductChannel", {
 		$('#see-comments').prepend(data.comment);
 		var commentId = ".comment-" + $("[data-comment-id]").data("comment-id");
 		$('#see-comments').find(commentId).addClass("flash-highlight").removeClass("flash-highlight", 500)
+		$('#see-comments').find(commentId).find('.comment-delete').hide();
 		highlightComments();
 		rated();
 	},
