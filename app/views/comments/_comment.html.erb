@@ -13,14 +13,6 @@
 				</div>
 				<footer class="blockquote-footer"><%= comment.user.first_name %><span class="ml-1"><%= time_ago_in_words(comment.created_at) %> ago</span></footer>
 			</blockquote>
-			<%= comment.user.id %>, <%= current_user.id %>, <%= current_user.admin %>
-				
-				Can I delete this: 
-				<% if comment.user.id == current_user.id %>
-				Yes
-				<% else %>
-				No
-				<% end %>
 		</div>
 		
 		<% if current_user %>
